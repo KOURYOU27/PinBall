@@ -15,7 +15,6 @@ public class BallController : MonoBehaviour {
     private GameObject scoreText;
     //スコアの変数
     int score = 0;
-    int point = 0;
 
     // Use this for initialization
     void Start () {
@@ -49,26 +48,21 @@ public class BallController : MonoBehaviour {
         // タグによって得点を変える
         if (collision.gameObject.tag == "SmallStarTag")
         {
-            point += 1;
+            score += 1;
         }
         else if (collision.gameObject.tag == "LargeStarTag")
         {
-            point += 2;
+            score += 2;
         }
         else if (collision.gameObject.tag == "SmallCloudTag")
         {
-            point += 3;
+            score += 3;
         }
         else if (collision.gameObject.tag == "LargeCloudTag")
         {
-            point += 4;
-        }
-        else
-        {
-            point += 0;
+            score += 4;
         }
 
-        score = score + point;
 
         //ScoreTextに表示
         this.scoreText.GetComponent<Text>().text = "SCORE = " + score;
