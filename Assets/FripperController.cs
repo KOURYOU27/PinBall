@@ -56,7 +56,6 @@ public class FripperController : MonoBehaviour {
         }
 
 
-
         //タッチがあるかどうか？
         if (Input.touchCount > 0)
         {
@@ -66,35 +65,31 @@ public class FripperController : MonoBehaviour {
 
 
             //左半分タッチ直後
-            if (touch.phase == TouchPhase.Began && touch.position.x < 0.5 && tag == "LeftFripperTag")
+            if (touch.phase == TouchPhase.Began && touch.position.x < Screen.width / 2 && tag == "LeftFripperTag")
             {
-
                 SetAngle(this.flickAngle);
 
+                Debug.Log("左タッチ");
             }
 
             //左半分離した瞬間
-            if (touch.phase == TouchPhase.Ended && touch.position.x < 0.5 && tag == "LeftFripperTag")
+            if (touch.phase == TouchPhase.Ended && touch.position.x < Screen.width / 2 && tag == "LeftFripperTag")
             {
-
                 SetAngle(this.defaultAngle);
-
             }
 
             //右半分タッチ直後
-            if (touch.phase == TouchPhase.Began && touch.position.x >= 0.5 && tag == "RightFripperTag")
+            if (touch.phase == TouchPhase.Began && touch.position.x >= Screen.width / 2 && tag == "RightFripperTag")
             {
-
                 SetAngle(this.flickAngle);
 
+                Debug.Log("右タッチ");
             }
 
             //右半分離した瞬間
-            if (touch.phase == TouchPhase.Ended && touch.position.x >= 0.5 && tag == "RightFripperTag")
+            if (touch.phase == TouchPhase.Ended && touch.position.x >= Screen.width / 2 && tag == "RightFripperTag")
             {
-
                 SetAngle(this.defaultAngle);
-
             }
 
 
