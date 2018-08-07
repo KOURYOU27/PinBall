@@ -60,38 +60,35 @@ public class FripperController : MonoBehaviour {
         if (Input.touchCount > 0)
         {
 
-            Touch touch = Input.GetTouch(0);
-            TouchPosition.x = touch.position.x;
-
-
-            //左半分タッチ直後
-            if (touch.phase == TouchPhase.Began && touch.position.x < Screen.width / 2 && tag == "LeftFripperTag")
+            for (int i = 0; i < Input.touchCount; i++)
             {
-                SetAngle(this.flickAngle);
 
-                Debug.Log("左タッチ");
+                Touch[] myTouches = Input.touches;
+
+                //左半分タッチ直後
+                if (myTouches[i].phase == TouchPhase.Began && myTouches[i].position.x < Screen.width / 2 && tag == "LeftFripperTag")
+                {
+                    SetAngle(this.flickAngle);
+                }
+
+                //左半分離した瞬間
+                if (myTouches[i].phase == TouchPhase.Ended && tag == "LeftFripperTag")
+                {
+                    SetAngle(this.defaultAngle);
+                }
+
+                //右半分タッチ直後
+                if (myTouches[i].phase == TouchPhase.Began && myTouches[i].position.x >= Screen.width / 2 && tag == "RightFripperTag")
+                {
+                    SetAngle(this.flickAngle);
+                }
+
+                //右半分離した瞬間
+                if (myTouches[i].phase == TouchPhase.Ended && tag == "RightFripperTag")
+                {
+                    SetAngle(this.defaultAngle);
+                }
             }
-
-            //左半分離した瞬間
-            if (touch.phase == TouchPhase.Ended && touch.position.x < Screen.width / 2 && tag == "LeftFripperTag")
-            {
-                SetAngle(this.defaultAngle);
-            }
-
-            //右半分タッチ直後
-            if (touch.phase == TouchPhase.Began && touch.position.x >= Screen.width / 2 && tag == "RightFripperTag")
-            {
-                SetAngle(this.flickAngle);
-
-                Debug.Log("右タッチ");
-            }
-
-            //右半分離した瞬間
-            if (touch.phase == TouchPhase.Ended && touch.position.x >= Screen.width / 2 && tag == "RightFripperTag")
-            {
-                SetAngle(this.defaultAngle);
-            }
-
 
         }
 
