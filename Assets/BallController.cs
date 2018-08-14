@@ -14,7 +14,7 @@ public class BallController : MonoBehaviour {
     //スコア文を表示するテキスト
     private GameObject scoreText;
     //スコアの変数
-    int score = 0;
+    public int score = 0;
 
     // Use this for initialization
     void Start () {
